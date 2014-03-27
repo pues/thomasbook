@@ -1,9 +1,11 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="row-fluid">
+  <div class="span4">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(  resource_name), html: { method: :put, class: "well"}) do |f| %>
+  <fieldset>
+      <legend>Sign Up</legend>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.input :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -13,17 +15,19 @@
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.input :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.input :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+  <div><%= f.button :submit, "Update" %></div>
 
-<h3>Cancel my account</h3>
+      <legend>Cancel My Account</legend>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+</fieldset>
+<% end %>
+</div>
+</div>
 <%= link_to "Back", :back %>
