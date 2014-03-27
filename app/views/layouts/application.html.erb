@@ -27,10 +27,14 @@
 			</div>
 		</div>
 	</div>			
-	<div class="container-fluid">	
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
-		<%= yield %>
-	</div>
+	<div class="container-fluid">
+	<% flash.each do |type, message| %>		
+		<div class="alert <%= flash_class type %>">
+			<button class="close" data-dismiss="alert">x</button>
+			<%= message %>
+		</div>	
+	<% end %>
+	<%= yield %>
+	</div>	
 </body>
 </html>
